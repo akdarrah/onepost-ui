@@ -2,7 +2,7 @@
   "name": "OnePostUI",
   "version": "1.0.0",
   "description": "A prebuilt UI you can use along with the OnePost API",
-  "main": "index.js",
+  "main": "dist/OnepostUI.js",
   "repository": {
     "url": "https://github.com/akdarrah/onepost-ui",
     "type": "git"
