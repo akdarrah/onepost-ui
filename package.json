@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A prebuilt UI you can use along with the OnePost API",
   "main": "index.js",
+  "repository": "github.com/akdarrah/onepost-ui",
   "author": "Adam Darrah",
   "license": "MIT",
   "private": false
