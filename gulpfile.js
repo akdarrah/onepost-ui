@@ -1,25 +1,29 @@
 const {dest, src, task} = require('gulp');
-const browserify = require('browserify');
-var babelify = require("babelify");
-const source = require('vinyl-source-stream');
-const buffer = require('vinyl-buffer');
-const gulpSvelte = require('gulp-svelte');
+const gulp = require('gulp');
+const rollup = require('gulp-rollup');
+const sourcemaps = require('gulp-sourcemaps');
+const babel = require('gulp-babel');
+const commonjs = require('@rollup/plugin-commonjs');
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+
+// const browserify = require('browserify');
+// var babelify = require("babelify");
+// const source = require('vinyl-source-stream');
+// const buffer = require('vinyl-buffer');
+// const gulpSvelte = require('gulp-svelte');
 
 task('default', () => {
-  return browserify({
-      basedir: '.',
-      debug: true,
-      entries: ['./src/OnepostUI.js'],
-      cache: {},
-      packageCache: {}
-    })
-    .transform(babelify.configure({
-      presets: ["@babel/preset-env"]
-    }))
-    .bundle().on('error', (e) => console.log(e))
-    .pipe(source('OnepostUI.js'))
-    .pipe(buffer())
-    .pipe(dest('dist'));
-
-    // .pipe(gulpSvelte())
+  gulp.src('./src/**/*.js')
+    .pipe(sourcemaps.init())
+      .pipe(rollup({
+        input: './src/OnepostUI.js',
+        output: {format: 'iife'},
+        plugins: [
+          babel({presets: ['@babel/env']}),
+          nodeResolve(),
+          commonjs()
+        ]
+      }))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./dist'));
 });

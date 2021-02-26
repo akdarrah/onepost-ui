@@ -1,2 +1,4 @@
-import OnepostUI from './svelte/example.svelte';
-export default OnepostUI;
+// import OnepostUI from './svelte/example.svelte';
+// export default OnepostUI;
+
+var hi = "hi";
