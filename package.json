@@ -9,5 +9,9 @@
   },
   "author": "Adam Darrah <adam@getonepost.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-svelte": "Foxcapades/gulp-svelte#master"
+  }
 }
