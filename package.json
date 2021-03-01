@@ -11,35 +11,8 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "@babel/cli": "^7.13.0",
-    "@babel/core": "^7.13.1",
-    "@babel/preset-env": "^7.13.5",
-    "@rollup/plugin-commonjs": "^17.1.0",
-    "@rollup/plugin-node-resolve": "^11.2.0",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babelify": "^10.0.0",
     "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0",
-    "gulp-browserify": "^0.5.1",
-    "gulp-rollup": "^2.17.0",
-    "gulp-sourcemaps": "^3.0.0",
-    "gulp-svelte": "Foxcapades/gulp-svelte#master",
-    "rollup-plugin-babel": "^4.4.0",
-    "sveltify": "^3.0.0",
-    "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0"
-  },
-  "browserify": {
-    "transform": [
-      [
-        "sveltify",
-        {
-          "extensions": [
-            ".html",
-            ".svelte"
-          ]
-        }
-      ]
-    ]
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "typescript": "^4.2.2"
   }
 }
