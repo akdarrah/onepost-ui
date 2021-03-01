@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <head>
   <script src="../dist/OnepostUI.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+    iframe {
+      border: none;
+    }
+
+    #onepost-demo {
+      min-height: 300px;
+    }
+  </style>
 </head>
 <html>
   <body>
-    <div id="onepost-demo"></div>
-
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div id="onepost-demo" class="embed-responsive"></div>
+        </div>
+      </div>
+    </div>
     <script>
       var target = document.getElementById("onepost-demo");
       var publicKey = "pk-cbe628a0-5538-0139-b375-76de50b5e55c";
