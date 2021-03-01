@@ -9,7 +9,19 @@ var OnepostUI = /** @class */ (function () {
         this.publicKey = publicKey;
         this.authorizedPageIds = authorizedPageIds;
     }
+    OnepostUI.prototype.attach = function () {
+        this.iframe = this.constructIframe();
+        this.target.appendChild(this.iframe);
+    };
+    OnepostUI.prototype.constructIframe = function () {
+        var iframe = document.createElement('iframe');
+        iframe.src = this.endpointWithParams();
+        return iframe;
+    };
     OnepostUI.prototype.endpointWithParams = function () {
+        return this.endpoint + "&" + this.encodedParams();
+    };
+    OnepostUI.prototype.encodedParams = function () {
         var params = {
             "public_key": this.publicKey,
             "authorized_page_ids[]": this.authorizedPageIds
