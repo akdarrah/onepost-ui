@@ -1,11 +1,9 @@
 export class OnepostUI {
-  greeting: string;
+  public publicKey: string;
+  public authorizedPageIds: Array<number>;
 
-  constructor(message: string) {
-    this.greeting = message;
-  }
-
-  greet() {
-    return "Hello, " + this.greeting;
+  constructor(publicKey: string, authorizedPageIds: Array<number>) {
+    this.publicKey = publicKey;
+    this.authorizedPageIds = authorizedPageIds;
   }
 }
