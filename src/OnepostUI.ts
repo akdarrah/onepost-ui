@@ -1,1 +1,11 @@
-let helloWorld = "Hello World";
+export class OnepostUI {
+  greeting: string;
+
+  constructor(message: string) {
+    this.greeting = message;
+  }
+
+  greet() {
+    return "Hello, " + this.greeting;
+  }
+}
