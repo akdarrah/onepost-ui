@@ -1,9 +1,13 @@
+"use strict";
+exports.__esModule = true;
+exports.OnepostUI = void 0;
 var OnepostUI = /** @class */ (function () {
-    function OnepostUI(message) {
-        this.greeting = message;
+    function OnepostUI(target, publicKey, authorizedPageIds) {
+        this.endpoint = "https://api.getonepost.com/post_intents/new";
+        this.target = target;
+        this.publicKey = publicKey;
+        this.authorizedPageIds = authorizedPageIds;
     }
-    OnepostUI.prototype.greet = function () {
-        return "Hello, " + this.greeting;
-    };
     return OnepostUI;
 }());
+exports.OnepostUI = OnepostUI;

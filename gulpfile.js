@@ -4,8 +4,7 @@ var ts = require('gulp-typescript');
 gulp.task('default', () => {
   return gulp.src('src/**/*.ts')
     .pipe(ts({
-        noImplicitAny: true,
-        outFile: 'OnepostUI.js'
+      noImplicitAny: true
     }))
     .pipe(gulp.dest('dist'));
 });
