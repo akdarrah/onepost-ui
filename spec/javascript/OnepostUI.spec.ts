@@ -37,7 +37,7 @@ describe('OnepostUI#endpointWithParams', () => {
     let element = document.body;
     let onepost = new OnepostUI(element, "pk-12345", [1]);
 
-    expect(onepost['endpointWithParams']()).toBe("https://api.getonepost.com/post_intents/new&authorized_page_ids%5B%5D=1&public_key=pk-12345");
+    expect(onepost['endpointWithParams']()).toBe("https://api.getonepost.com/post_intents/new?authorized_page_ids%5B%5D=1&public_key=pk-12345");
   })
 })
 
@@ -47,6 +47,6 @@ describe('OnepostUI#constructIframe', () => {
     let onepost = new OnepostUI(element, "pk-12345", [1]);
     let iframe = onepost['constructIframe']();
 
-    expect(iframe.src).toBe("https://api.getonepost.com/post_intents/new&authorized_page_ids%5B%5D=1&public_key=pk-12345");
+    expect(iframe.src).toBe("https://api.getonepost.com/post_intents/new?authorized_page_ids%5B%5D=1&public_key=pk-12345");
   })
 })

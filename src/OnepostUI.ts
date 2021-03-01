@@ -27,7 +27,7 @@ export class OnepostUI {
   }
 
   private endpointWithParams() {
-    return `${this.endpoint}&${this.encodedParams()}`;
+    return `${this.endpoint}?${this.encodedParams()}`;
   }
 
   private encodedParams() {
