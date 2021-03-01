@@ -10,3 +10,12 @@ describe('OnepostUI#constructor', () => {
     expect(onepost.authorizedPageIds).toEqual([1,2,3]);
   })
 })
+
+describe('OnepostUI#endpointWithParams', () => {
+  it('returns encoded params', () => {
+    let element = document.body;
+    let onepost = new OnepostUI(element, "pk-12345", [1]);
+
+    expect(onepost['endpointWithParams']()).toBe("authorized_page_ids%5B%5D=1&public_key=pk-12345");
+  })
+})

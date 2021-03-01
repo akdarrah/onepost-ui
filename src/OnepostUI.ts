@@ -1,3 +1,5 @@
+const queryString = require('query-string');
+
 export class OnepostUI {
   readonly endpoint = "https://api.getonepost.com/post_intents/new";
 
@@ -9,5 +11,14 @@ export class OnepostUI {
     this.target = target;
     this.publicKey = publicKey;
     this.authorizedPageIds = authorizedPageIds;
+  }
+
+  private endpointWithParams() {
+    let params = {
+      "public_key": this.publicKey,
+      "authorized_page_ids[]": this.authorizedPageIds
+    }
+
+    return queryString.stringify(params);
   }
 }
