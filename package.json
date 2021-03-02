@@ -10,6 +10,16 @@
   "author": "Adam Darrah <adam@getonepost.com>",
   "license": "MIT",
   "private": false,
+  "keywords": [
+    "onepost",
+    "onepost-ui",
+    "twitter",
+    "facebook",
+    "instagram",
+    "social",
+    "api",
+    "ui"
+  ],
   "presets": [
     "@babel/preset-typescript"
   ],
