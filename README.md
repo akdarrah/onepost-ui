@@ -85,7 +85,7 @@ When the form is successfully submitted, a `PostIntent` record will be created w
 
 Use the [Get a Post Intent endpoint](https://rapidapi.com/onepost/api/onepost1?endpoint=apiendpoint_9476022d-7974-49e0-8d84-aefbd3105894) along with the token from the frontend to fetch the `PostIntent` data. **WARNING: It is extremely important and highly recommend that you compare the `authorized_page_ids` of this record with the `AuthorizedPage`s the user is allowed to post to.** Because of the nature of this architecture, it is possible the user could have modified (or added) an `AuthorizedPage` ID they should not have access to (resulting in posting to someone else's account).
 
-Once you are sure the `authorized_page_ids` are correct, use the [Create a Post endpoint](https://rapidapi.com/onepost/api/onepost1?endpoint=apiendpoint_7cae6f56-d9c9-4d9c-8c6f-51d0feccb598) along with your token to create a new `Post` record.
+Once you are absolutely sure the `authorized_page_ids` are correct and valid, use the [Create a Post endpoint](https://rapidapi.com/onepost/api/onepost1?endpoint=apiendpoint_7cae6f56-d9c9-4d9c-8c6f-51d0feccb598) along with your token to create a new `Post` record (See the "With Post Intent Token" Request body example).
 
 ## Development
 
