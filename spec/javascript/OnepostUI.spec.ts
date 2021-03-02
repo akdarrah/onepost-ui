@@ -16,7 +16,12 @@ describe('OnepostUI#attach', () => {
     let element = document.body;
     expect(element.innerHTML).toBe("");
 
+    const mockLoadIframeResizerJS = jest.fn((callback) => {
+      callback();
+    });
+
     let onepost = new OnepostUI(element, "pk-12345", [1]);
+    onepost["loadIframeResizerJS"] = mockLoadIframeResizerJS;
     onepost.attach();
 
     expect(element.innerHTML).not.toBe("");

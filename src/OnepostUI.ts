@@ -2,6 +2,7 @@ const queryString = require('query-string');
 
 export class OnepostUI {
   readonly endpoint = "https://api.getonepost.com/post_intents/new";
+  readonly iframeResizerSrc = "https://unpkg.com/iframe-resizer@4.3.1/js/iframeResizer.min.js";
 
   public target: HTMLElement;
   public publicKey: string;
@@ -15,8 +16,14 @@ export class OnepostUI {
   }
 
   attach() {
-    this.iframe = this.constructIframe();
-    this.target.appendChild(this.iframe);
+    this.loadIframeResizerJS(() => {
+      this.iframe = this.constructIframe();
+      this.target.appendChild(this.iframe);
+
+      this.iframe.addEventListener("load", () => {
+        window['iFrameResize'](this.iframe);
+      });
+    });
   }
 
   private constructIframe() {
@@ -37,5 +44,14 @@ export class OnepostUI {
     }
 
     return queryString.stringify(params);
+  }
+
+  private loadIframeResizerJS(callback: any) {
+    let script = document.createElement('script');
+
+    script.src = this.iframeResizerSrc;
+    script.onload = callback;
+
+    document.head.appendChild(script);
   }
 }
