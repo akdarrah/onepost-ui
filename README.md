@@ -79,7 +79,7 @@ onepost.attach();
 
 ### Server-side Processing
 
-When registering for a OnePost user account, you will be given a `secret_key` and a `public_key`. It is extremely important that your `secret_key` always remains a secret, and therefore cannot be used in the frontend of your website where it could be exposed to users. As a result, the OnepostUI uses your `public_key` for authentication.
+When registering for a OnePost user account, you will be given a `secret_key` and a `public_key`. It is extremely important that your `secret_key` always remains a secret. **Therefore, you must not use the `secret_key` in the frontend of your website where it could be exposed to users.** As a result, OnepostUI uses your `public_key` for authentication.
 
 When the OnepostUI is successfully submitted, a `PostIntent` record will be created with a `token` (you will have access to this in the `onSuccess` callback function). When you receive this token, you can submit a request to your web application for server side processing.
 
