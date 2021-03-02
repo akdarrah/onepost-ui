@@ -48,6 +48,32 @@ describe('OnepostUI#attach', () => {
 
     expect(element.innerHTML).not.toBe("");
   })
+
+  test("listens for onepost.post_intent.success event", async function() {
+    let callback = jest.fn((data) => {});
+    let element = document.body;
+    let onepost = new OnepostUI(element, "pk-12345", [1], {
+      onSuccess: callback
+    });
+
+    onepost.attach();
+    window.postMessage({message: "onepost.post_intent.success", value: {}}, "*");
+    await new Promise(resolve => setTimeout(resolve, 100));
+    expect(callback.mock.calls.length).toBe(1);
+  })
+
+  test("listens for onepost.post_intent.failure event", async function() {
+    let callback = jest.fn((error) => {});
+    let element = document.body;
+    let onepost = new OnepostUI(element, "pk-12345", [1], {
+      onFailure: callback
+    });
+
+    onepost.attach();
+    window.postMessage({message: "onepost.post_intent.failure", value: {}}, "*");
+    await new Promise(resolve => setTimeout(resolve, 100));
+    expect(callback.mock.calls.length).toBe(1);
+  })
 })
 
 describe('OnepostUI#encodedParams', () => {
