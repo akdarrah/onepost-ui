@@ -23,7 +23,19 @@
       var target = document.getElementById("onepost-demo");
       var publicKey = "pk-cbe628a0-5538-0139-b375-76de50b5e55c";
       var authorizedPageIds = [13, 14, 15];
-      var onepost = new OnepostUI(target, publicKey, authorizedPageIds);
+
+      var onSuccess = function(data){
+        console.log("success!", data);
+      }
+
+      var onFailure = function(error){
+        console.log("failure...", error.response);
+      }
+
+      var onepost = new OnepostUI(target, publicKey, authorizedPageIds, {
+        onSuccess: onSuccess,
+        onFailure: onFailure
+      });
 
       onepost.attach();
     </script>

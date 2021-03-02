@@ -1,5 +1,10 @@
 const queryString = require('query-string');
 
+interface OnepostUIOptions {
+  onSuccess?: (data) => void
+  onFailure?: (error) => void
+}
+
 export class OnepostUI {
   readonly endpoint = "https://api.getonepost.com/post_intents/new";
   readonly iframeResizerSrc = "https://unpkg.com/iframe-resizer@4.3.1/js/iframeResizer.min.js";
@@ -8,11 +13,18 @@ export class OnepostUI {
   public publicKey: string;
   public authorizedPageIds: Array<number>;
   public iframe: HTMLElement;
+  public options: OnepostUIOptions;
+  public onSuccess: Function;
+  public onFailure: Function;
 
-  constructor(target: HTMLElement, publicKey: string, authorizedPageIds: Array<number>) {
+  constructor(target: HTMLElement, publicKey: string, authorizedPageIds: Array<number>, options: OnepostUIOptions = {}) {
     this.target = target;
     this.publicKey = publicKey;
     this.authorizedPageIds = authorizedPageIds;
+
+    this.options = options;
+    this.onSuccess = (typeof(options['onSuccess']) === 'function' ? options['onSuccess'] : ((data) => {}));
+    this.onFailure = (typeof(options['onFailure']) === 'function' ? options['onFailure'] : ((error) => {}));
   }
 
   attach() {
@@ -24,6 +36,19 @@ export class OnepostUI {
         window['iFrameResize'](this.iframe);
       });
     });
+
+    window.addEventListener("message", (event: any) => {
+      switch(event.data.message) {
+        case "onepost.post_intent.success": {
+          this.onSuccess(event.data.value);
+          break;
+        }
+        case "onepost.post_intent.failure": {
+          this.onFailure(event.data.value);
+          break;
+        }
+      }
+    }, false);
   }
 
   private constructIframe() {
