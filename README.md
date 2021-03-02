@@ -12,6 +12,18 @@ If you're using the OnePost API to build a web application, use this prebuilt UI
 
 ## Installation
 
+Install using yarn:
+
+```
+yarn add onepost-ui
+```
+
+Then, import to get access to `OnepostUI`:
+
+```
+import OnepostUI from "onepost-ui";
+```
+
 ## Usage
 
 ## Development
