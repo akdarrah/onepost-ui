@@ -18,7 +18,7 @@ This UI is completely responsive and easy to use:
 
 ## Development
 
-After checking out the repo, run `yarn install` to install dependencies. Then, run `yarn test` to run the tests. To build the project onto your local machine, run `gulp`.
+After checking out the repo, run `yarn install` to install dependencies. Then, run `yarn test` to run the tests. To build the project onto your local machine, run `gulp`. Finally, run `npm publish` to publish a new version to npm.
 
 ## Contributing
 
