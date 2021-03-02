@@ -81,7 +81,7 @@ onepost.attach();
 
 When registering for a OnePost user account, you will be given a `secret_key` and a `public_key`. It is extremely important that your `secret_key` always remains a secret. **Therefore, you must not use the `secret_key` in the frontend of your website where it could be exposed to users.** As a result, OnepostUI uses your `public_key` for authentication.
 
-When the OnepostUI is successfully submitted, a `PostIntent` record will be created with a `token` (you will have access to this in the `onSuccess` callback function). When you receive this token, you can submit a request to your web application for server side processing.
+When the form is successfully submitted, a `PostIntent` record will be created with a `token` (you have access to this token in the `onSuccess` callback function). When you receive the token, you can submit a request to your web application for server side processing (where it is safe to use your `secret_key`).
 
 Use the [Get a Post Intent endpoint](https://rapidapi.com/onepost/api/onepost1?endpoint=apiendpoint_9476022d-7974-49e0-8d84-aefbd3105894) along with the token from the frontend to fetch the `PostIntent` data. **WARNING: It is extremely important and highly recommend that you compare the `authorized_page_ids` of this record with the `AuthorizedPage`s the user is allowed to post to.** Because of the nature of this architecture, it is possible the user could have modified (or added) an ID they should not have access to (resulting in posting to someone else's account).
 
