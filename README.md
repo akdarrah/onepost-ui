@@ -18,11 +18,11 @@ This UI is completely responsive and easy to use:
 
 ## Development
 
+After checking out the repo, run `yarn install` to install dependencies. Then, run `yarn test` to run the tests. To build the project onto your local machine, run `gulp`.
 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/akdarrah/onepost-ui. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/akdarrah/onepost-ui/blob/master/CODE_OF_CONDUCT.md).
-
 
 ## License
 
