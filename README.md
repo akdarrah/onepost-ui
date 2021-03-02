@@ -2,15 +2,13 @@
 
 OnePost is social media management infrastructure for the internet. Companies use our API to create, post, and manage their social presence via programmatic communication. You can think of it like a headless Hootsuite built for developers. Learn more at [https://www.getonepost.com/](https://www.getonepost.com/).
 
-Using the OnePost API, you are able to build a custom UI yourself to fit your application. However, if you're building a web appliation and looking for an existing UI that is built to work with the Onepost API directly, then this is it!
+If you're using the OnePost API to build a web application, use this prebuilt UI to get up and running as quickly as possible.
+
+1. Pick your social accounts (Twitter, Facebook, or Instagram) you want to post to.
+2. Add your post's text and/or image. You can preview what your post will look for each social network as you type.
+3. Publish your post immediately to all accounts when your post is perfect (or schedule for a later time).
 
 ![](https://user-images.githubusercontent.com/69064/109696613-3ec0df80-7b5b-11eb-8f4f-30d0f947fd64.png)
-
-This UI is completely responsive and easy to use:
-
-1. Pick from your list of "Authorized pages" (aka your authorized Twitter, Facebook, or Instagram accounts)
-2. Add your post's text or image. Preview what your post will look for each social network.
-3. When you're ready, you can post immediately or schedule for a later date.
 
 ## Installation
 
