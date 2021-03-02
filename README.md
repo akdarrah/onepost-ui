@@ -10,7 +10,7 @@ If you're using the OnePost API to build a web application, use this prebuilt UI
 
 ![](https://user-images.githubusercontent.com/69064/109696613-3ec0df80-7b5b-11eb-8f4f-30d0f947fd64.png)
 
-This UI was designed to work with the [OnePost API](https://rapidapi.com/onepost/api/onepost1) hosted on RapidAPI.
+This UI was designed to work with the [OnePost API](https://rapidapi.com/onepost/api/onepost1) hosted on RapidAPI. If you're using Ruby, be sure to check out the [Official OnePost Ruby Gem](https://github.com/akdarrah/onepost-gem).
 
 ## Installation
 
