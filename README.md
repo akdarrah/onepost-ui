@@ -54,6 +54,8 @@ OnepostUI needs to know where it should be rendered. Add an HTML element somewhe
 
 You can get your `publicKey` by [registering for a user account on our website](https://www.getonepost.com/). Then, use the [OnePost API](https://rapidapi.com/onepost/api/onepost1) to add at least one `Provider`, `Authorization`, and `AuthorizedPage` record to your account.
 
+Add this Javascript to your page to see the form in action:
+
 ```javascript
 var target = document.getElementById("onepost-demo");
 var publicKey = "pk-cbe628a0-5538-0139-b375-76de50b5e55c";
