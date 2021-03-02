@@ -16,13 +16,13 @@ This UI was designed to work with the [OnePost API](https://rapidapi.com/onepost
 
 Install using yarn:
 
-```
+```shell
 yarn add onepost-ui
 ```
 
 Then, import to get access to `OnepostUI`:
 
-```
+```javascript
 import OnepostUI from "onepost-ui";
 ```
 
