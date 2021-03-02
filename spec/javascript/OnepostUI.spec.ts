@@ -8,6 +8,28 @@ describe('OnepostUI#constructor', () => {
     expect(onepost.target).toBe(element);
     expect(onepost.publicKey).toBe("pk-12345");
     expect(onepost.authorizedPageIds).toEqual([1,2,3]);
+    expect(typeof(onepost.onSuccess)).toBe("function");
+    expect(typeof(onepost.onFailure)).toBe("function");
+  })
+
+  it('can be initialized with an onSuccess callback', () => {
+    let callback = (data) => {};
+    let element = document.body;
+    let onepost = new OnepostUI(element, "pk-12345", [1,2,3], {
+      onSuccess: callback
+    });
+
+    expect(onepost.onSuccess).toBe(callback);
+  })
+
+  it('can be initialized with an onFailure callback', () => {
+    let callback = (data) => {};
+    let element = document.body;
+    let onepost = new OnepostUI(element, "pk-12345", [1,2,3], {
+      onFailure: callback
+    });
+
+    expect(onepost.onFailure).toBe(callback);
   })
 })
 
