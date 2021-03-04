@@ -1,6 +1,6 @@
 {
   "name": "onepost-ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A prebuilt UI you can use along with the OnePost API",
   "main": "dist/OnepostUI.js",
   "repository": {
