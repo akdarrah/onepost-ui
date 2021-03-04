@@ -1,4 +1,4 @@
-# OnepostUI
+# OnePostUI
 
 OnePost is social media management infrastructure for the internet. Companies use our API to create, post, and manage their social presence via programmatic communication. You can think of it like a headless Hootsuite built for developers. Learn more at [https://www.getonepost.com/](https://www.getonepost.com/).
 
@@ -32,7 +32,7 @@ Take a look at [demo/index.html](https://github.com/akdarrah/onepost-ui/blob/mas
 
 ### Styles
 
-OnepostUI makes use of an `iframe` to render the form. Make sure your `iframe` is styled nicely using CSS. We also use [iframe-resizer](https://github.com/davidjbradshaw/iframe-resizer) to make sure the content of the form is always visible.
+OnePostUI makes use of an `iframe` to render the form. Make sure your `iframe` is styled nicely using CSS. We also use [iframe-resizer](https://github.com/davidjbradshaw/iframe-resizer) to make sure the content of the form is always visible.
 
 ```css
 iframe {
@@ -44,7 +44,7 @@ iframe {
 
 ### HTML
 
-OnepostUI needs to know where it should be rendered. Add an HTML element somewhere in your page to use as the `target` HTML node:
+OnePostUI needs to know where it should be rendered. Add an HTML element somewhere in your page to use as the `target` HTML node:
 
 ```html
 <div id="onepost-demo"></div>
@@ -79,7 +79,7 @@ onepost.attach();
 
 ### Server-side Processing
 
-When registering for a OnePost user account, you will be given a `secret_key` and a `public_key`. It is extremely important that your `secret_key` always remains a secret. **Therefore, you must not use the `secret_key` in the frontend of your website where it could be exposed to users.** As a result, OnepostUI uses your `public_key` for authentication.
+When registering for a OnePost user account, you will be given a `secret_key` and a `public_key`. It is extremely important that your `secret_key` always remains a secret. **Therefore, you must not use the `secret_key` in the frontend of your website where it could be exposed to users.** As a result, OnePostUI uses your `public_key` for authentication.
 
 When the form is successfully submitted, a `PostIntent` record will be created with a `token` (you have access to this token in the `onSuccess` callback function). When you receive the token, you can submit a request to your web application for server side processing (where it is safe to use your `secret_key`).
 
@@ -101,4 +101,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Onepost project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/akdarrah/onepost-ui/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the OnePostUI project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/akdarrah/onepost-ui/blob/master/CODE_OF_CONDUCT.md).
