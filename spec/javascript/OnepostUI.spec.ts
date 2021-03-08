@@ -1,5 +1,9 @@
 import { OnepostUI } from '../../src/OnepostUI';
 
+afterEach(() => {
+  document.body.innerHTML = '';
+});
+
 describe('OnepostUI#constructor', () => {
   it('can be initialized', () => {
     let element = document.body;
@@ -73,6 +77,70 @@ describe('OnepostUI#attach', () => {
     window.postMessage({message: "onepost.post_intent.failure", value: {}}, "*");
     await new Promise(resolve => setTimeout(resolve, 100));
     expect(callback.mock.calls.length).toBe(1);
+  })
+})
+
+describe('OnepostUI#detach', () => {
+  it('removes the iframe from the target', () => {
+    let element = document.body;
+    expect(element.innerHTML).toBe("");
+
+    const mockLoadIframeResizerJS = jest.fn((callback) => {
+      callback();
+    });
+
+    let onepost = new OnepostUI(element, "pk-12345", [1]);
+    onepost["loadIframeResizerJS"] = mockLoadIframeResizerJS;
+
+    onepost.attach();
+    expect(element.innerHTML).not.toBe("");
+
+    onepost.detach();
+    expect(element.innerHTML).toBe("");
+  })
+
+  test("stops listening for onepost.post_intent.success event", async function() {
+    let callback = jest.fn((data) => {});
+    let element = document.body;
+    expect(element.innerHTML).toBe("");
+
+    const mockLoadIframeResizerJS = jest.fn((callback) => {
+      callback();
+    });
+
+    let onepost = new OnepostUI(element, "pk-12345", [1], {
+      onSuccess: callback
+    });
+    onepost["loadIframeResizerJS"] = mockLoadIframeResizerJS;
+
+    onepost.attach();
+    onepost.detach();
+
+    window.postMessage({message: "onepost.post_intent.success", value: {}}, "*");
+    await new Promise(resolve => setTimeout(resolve, 100));
+    expect(callback.mock.calls.length).toBe(0);
+  })
+
+  test("stops listening for onepost.post_intent.failure event", async function() {
+    let callback = jest.fn((data) => {});
+    let element = document.body;
+    expect(element.innerHTML).toBe("");
+
+    const mockLoadIframeResizerJS = jest.fn((callback) => {
+      callback();
+    });
+
+    let onepost = new OnepostUI(element, "pk-12345", [1], {
+      onSuccess: callback
+    });
+    onepost["loadIframeResizerJS"] = mockLoadIframeResizerJS;
+
+    onepost.attach();
+    onepost.detach();
+
+    window.postMessage({message: "onepost.post_intent.failure", value: {}}, "*");
+    await new Promise(resolve => setTimeout(resolve, 100));
+    expect(callback.mock.calls.length).toBe(0);
   })
 })
 

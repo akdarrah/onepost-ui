@@ -16,6 +16,7 @@ export class OnepostUI {
   public options: OnepostUIOptions;
   public onSuccess: Function;
   public onFailure: Function;
+  public windowMessageCallback: any;
 
   constructor(target: HTMLElement, publicKey: string, authorizedPageIds: Array<number>, options: OnepostUIOptions = {}) {
     this.target = target;
@@ -37,7 +38,7 @@ export class OnepostUI {
       });
     });
 
-    window.addEventListener("message", (event: any) => {
+    this.windowMessageCallback = (event: any) => {
       switch(event.data.message) {
         case "onepost.post_intent.success": {
           this.onSuccess(event.data.value);
@@ -48,7 +49,17 @@ export class OnepostUI {
           break;
         }
       }
-    }, false);
+    }
+
+    window.addEventListener("message", this.windowMessageCallback, false);
+  }
+
+  detach() {
+    // https://github.com/davidjbradshaw/iframe-resizer/issues/534
+    // this.iframe.iframeResizer.close();
+
+    this.iframe.remove();
+    window.removeEventListener("message", this.windowMessageCallback);
   }
 
   private constructIframe() {
