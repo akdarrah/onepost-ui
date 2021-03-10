@@ -3,6 +3,7 @@ const queryString = require('query-string');
 interface OnepostUIOptions {
   onSuccess?: (data) => void
   onFailure?: (error) => void
+  imageIds?: Array<number>
 }
 
 export class OnepostUI {
@@ -12,6 +13,7 @@ export class OnepostUI {
   public target: HTMLElement;
   public publicKey: string;
   public authorizedPageIds: Array<number>;
+  public imageIds: Array<number>;
   public iframe: HTMLElement;
   public options: OnepostUIOptions;
   public onSuccess: Function;
@@ -26,6 +28,7 @@ export class OnepostUI {
     this.options = options;
     this.onSuccess = (typeof(options['onSuccess']) === 'function' ? options['onSuccess'] : ((data) => {}));
     this.onFailure = (typeof(options['onFailure']) === 'function' ? options['onFailure'] : ((error) => {}));
+    this.imageIds  = (typeof(options['imageIds']) === 'object' ? options['imageIds'] : []);
   }
 
   attach() {
@@ -76,7 +79,8 @@ export class OnepostUI {
   private encodedParams() {
     let params = {
       "public_key": this.publicKey,
-      "authorized_page_ids[]": this.authorizedPageIds
+      "authorized_page_ids[]": this.authorizedPageIds,
+      "image_upload_ids[]": this.imageIds
     }
 
     return queryString.stringify(params);

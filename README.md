@@ -87,6 +87,20 @@ Use the [Get a Post Intent endpoint](https://rapidapi.com/onepost/api/onepost1?e
 
 Once you are absolutely sure the `authorized_page_ids` are correct and valid, use the [Create a Post endpoint](https://rapidapi.com/onepost/api/onepost1?endpoint=apiendpoint_7cae6f56-d9c9-4d9c-8c6f-51d0feccb598) along with your token to create a new `Post` record (See the "With Post Intent Token" Request body example).
 
+### Image Options
+
+It is possible to preload the UI with image options available for the user to choose from by using the [Image API Endpoints](https://rapidapi.com/onepost/api/onepost1?endpoint=apiendpoint_d18c1244-f83f-4d0d-86e6-560f093a9eb5).
+
+![](https://user-images.githubusercontent.com/69064/110693051-03ef2500-81b5-11eb-870d-051a56ca3297.png)
+
+Once you've used the API to create some images, pass the IDs as an option to `OnepostUI` to make them appear:
+
+```
+var onepost = new OnepostUI(target, publicKey, authorizedPageIds, {
+  imageIds: [1,2,3]
+});
+```
+
 ## Development
 
 After checking out the repo, run `yarn install` to install dependencies. Then, run `yarn test` to run the tests. To build the project onto your local machine, run `gulp`. Finally, run `npm publish` to publish a new version to npm.

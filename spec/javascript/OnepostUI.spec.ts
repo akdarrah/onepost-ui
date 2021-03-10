@@ -12,6 +12,7 @@ describe('OnepostUI#constructor', () => {
     expect(onepost.target).toBe(element);
     expect(onepost.publicKey).toBe("pk-12345");
     expect(onepost.authorizedPageIds).toEqual([1,2,3]);
+    expect(onepost.imageIds).toEqual([]);
     expect(typeof(onepost.onSuccess)).toBe("function");
     expect(typeof(onepost.onFailure)).toBe("function");
   })
@@ -34,6 +35,15 @@ describe('OnepostUI#constructor', () => {
     });
 
     expect(onepost.onFailure).toBe(callback);
+  })
+
+  it('can be initialized with imageIds', () => {
+    let element = document.body;
+    let onepost = new OnepostUI(element, "pk-12345", [], {
+      imageIds: [1,2,3]
+    });
+
+    expect(onepost.imageIds).toEqual([1,2,3]);
   })
 })
 
@@ -151,6 +161,15 @@ describe('OnepostUI#encodedParams', () => {
 
     expect(onepost['encodedParams']()).toBe("authorized_page_ids%5B%5D=1&public_key=pk-12345");
   })
+
+  it('adds image_upload_ids to the URL', () => {
+    let element = document.body;
+    let onepost = new OnepostUI(element, "pk-12345", [1], {
+      imageIds: [3,4]
+    });
+
+    expect(onepost['encodedParams']()).toBe("authorized_page_ids%5B%5D=1&image_upload_ids%5B%5D=3&image_upload_ids%5B%5D=4&public_key=pk-12345");
+  })
 })
 
 describe('OnepostUI#endpointWithParams', () => {
@@ -159,6 +178,15 @@ describe('OnepostUI#endpointWithParams', () => {
     let onepost = new OnepostUI(element, "pk-12345", [1]);
 
     expect(onepost['endpointWithParams']()).toBe("https://api.getonepost.com/post_intents/new?authorized_page_ids%5B%5D=1&public_key=pk-12345");
+  })
+
+  it('returns endpoint with encoded params with image_upload_ids', () => {
+    let element = document.body;
+    let onepost = new OnepostUI(element, "pk-12345", [1], {
+      imageIds: [3,4]
+    });
+
+    expect(onepost['endpointWithParams']()).toBe("https://api.getonepost.com/post_intents/new?authorized_page_ids%5B%5D=1&image_upload_ids%5B%5D=3&image_upload_ids%5B%5D=4&public_key=pk-12345");
   })
 })
 
