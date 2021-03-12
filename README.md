@@ -87,6 +87,19 @@ Use the [Get a Post Intent endpoint](https://rapidapi.com/onepost/api/onepost1?e
 
 Once you are absolutely sure the `authorized_page_ids` are correct and valid, use the [Create a Post endpoint](https://rapidapi.com/onepost/api/onepost1?endpoint=apiendpoint_7cae6f56-d9c9-4d9c-8c6f-51d0feccb598) along with your token to create a new `Post` record (See the "With Post Intent Token" Request body example).
 
+### Editing a Post
+
+You will receive a `token` as part of the JSON response once you've successfully created a Post record using the API. If you need to edit the post, you can pass the token to `OnepostUI` to initialize the form with the existing post data.
+
+```
+var onepost = new OnepostUI(target, publicKey, authorizedPageIds, {
+  token: "00e230f0659501396b072cde48001122"
+});
+```
+
+A new `PostIntent` record will be created once the form has been submitted. You should verify the `authorized_page_ids` of this new record to verify the user has access [(See Server-side Processing
+)](https://github.com/akdarrah/onepost-ui#server-side-processing). Once verified, use the [Update a Post endpoint](https://rapidapi.com/onepost/api/onepost1?endpoint=apiendpoint_e535a1f0-aaba-4d50-9e27-e72e26d635b3) to update your Post.
+
 ### Image Options
 
 It is possible to preload the UI with image options available for the user to choose from by using the [Image API Endpoints](https://rapidapi.com/onepost/api/onepost1?endpoint=apiendpoint_d18c1244-f83f-4d0d-86e6-560f093a9eb5).

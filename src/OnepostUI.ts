@@ -4,6 +4,7 @@ interface OnepostUIOptions {
   onSuccess?: (data) => void
   onFailure?: (error) => void
   imageIds?: Array<number>
+  token?: string
 }
 
 export class OnepostUI {
@@ -14,6 +15,7 @@ export class OnepostUI {
   public publicKey: string;
   public authorizedPageIds: Array<number>;
   public imageIds: Array<number>;
+  public token: string;
   public iframe: HTMLElement;
   public options: OnepostUIOptions;
   public onSuccess: Function;
@@ -29,6 +31,7 @@ export class OnepostUI {
     this.onSuccess = (typeof(options['onSuccess']) === 'function' ? options['onSuccess'] : ((data) => {}));
     this.onFailure = (typeof(options['onFailure']) === 'function' ? options['onFailure'] : ((error) => {}));
     this.imageIds  = (typeof(options['imageIds']) === 'object' ? options['imageIds'] : []);
+    this.token     = (typeof(options['token']) === 'string' ? options['token'] : null);
   }
 
   attach() {
@@ -81,6 +84,10 @@ export class OnepostUI {
       "public_key": this.publicKey,
       "authorized_page_ids[]": this.authorizedPageIds,
       "image_upload_ids[]": this.imageIds
+    }
+
+    if(this.token && this.token.length > 0){
+      params["token"] = this.token;
     }
 
     return queryString.stringify(params);

@@ -15,6 +15,7 @@ describe('OnepostUI#constructor', () => {
     expect(onepost.imageIds).toEqual([]);
     expect(typeof(onepost.onSuccess)).toBe("function");
     expect(typeof(onepost.onFailure)).toBe("function");
+    expect(onepost.token).toBe(null);
   })
 
   it('can be initialized with an onSuccess callback', () => {
@@ -44,6 +45,15 @@ describe('OnepostUI#constructor', () => {
     });
 
     expect(onepost.imageIds).toEqual([1,2,3]);
+  })
+
+  it('can be initialized with a token', () => {
+    let element = document.body;
+    let onepost = new OnepostUI(element, "pk-12345", [], {
+      token: "12345"
+    });
+
+    expect(onepost.token).toBe("12345");
   })
 })
 
@@ -170,6 +180,15 @@ describe('OnepostUI#encodedParams', () => {
 
     expect(onepost['encodedParams']()).toBe("authorized_page_ids%5B%5D=1&image_upload_ids%5B%5D=3&image_upload_ids%5B%5D=4&public_key=pk-12345");
   })
+
+  it('adds the token to the URL', () => {
+    let element = document.body;
+    let onepost = new OnepostUI(element, "pk-12345", [1], {
+      token: "12345"
+    });
+
+    expect(onepost['encodedParams']()).toBe("authorized_page_ids%5B%5D=1&public_key=pk-12345&token=12345");
+  })
 })
 
 describe('OnepostUI#endpointWithParams', () => {
@@ -187,6 +206,15 @@ describe('OnepostUI#endpointWithParams', () => {
     });
 
     expect(onepost['endpointWithParams']()).toBe("https://api.getonepost.com/post_intents/new?authorized_page_ids%5B%5D=1&image_upload_ids%5B%5D=3&image_upload_ids%5B%5D=4&public_key=pk-12345");
+  })
+
+  it('returns endpoint with encoded params with token', () => {
+    let element = document.body;
+    let onepost = new OnepostUI(element, "pk-12345", [1], {
+      token: "12345"
+    });
+
+    expect(onepost['endpointWithParams']()).toBe("https://api.getonepost.com/post_intents/new?authorized_page_ids%5B%5D=1&public_key=pk-12345&token=12345");
   })
 })
 
